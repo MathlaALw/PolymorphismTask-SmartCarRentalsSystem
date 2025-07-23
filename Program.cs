@@ -27,7 +27,7 @@
                         Pause();
                         break;
                     case "2":
-                        //ViewVehicles();
+                        ViewVehicles();
                         Pause();
                         break;
                     case "3":
@@ -43,6 +43,8 @@
                 }
             }
         } // End of Main method
+
+        // Method to add a new vehicle
         static void AddVehicle()
         {
             Console.WriteLine("\nChoose vehicle type to add:");
@@ -105,6 +107,22 @@
         }
 
 
+        // Method to view all available vehicles
+        static void ViewVehicles()
+        {
+            Console.WriteLine("\nAvailable Vehicles:");
+            for (int i = 0; i < vehicles.Count; i++)
+            {
+                Vehicle v = vehicles[i];
+                Console.Write($"{i + 1}. {v.Brand} {v.Model} {v.Year} | ");
+                if (v is Car car)
+                    Console.WriteLine($"Car | Luxury: {(car.IsLuxury ? "Yes" : "No")}");
+                else if (v is Truck truck)
+                    Console.WriteLine($"Truck | Max Load: {truck.MaxLoadKG}kg");
+                else if (v is Motorbike bike)
+                    Console.WriteLine($"Motorbike | Helmet Required: {(bike.RequiresHelmet ? "Yes" : "No")}");
+            }
+        }
 
 
 
