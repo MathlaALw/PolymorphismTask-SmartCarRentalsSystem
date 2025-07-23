@@ -115,8 +115,15 @@
         {
             RequiresHelmet = requiresHelmet;
         }
+        // Method to calculate rental cost
+        public override double CalculateRentalCost(int days)
+        {
+            double cost = 40 * days;
+            if (days > 7)
+                cost *= 0.9;
+            return cost;
+        }
 
-      
     }
 
 
