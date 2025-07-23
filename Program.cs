@@ -185,6 +185,21 @@
 
 
 
+        // Method to save vehicles to file
+        static void SaveVehicleToFile(Vehicle vehicle)
+        {
+            using (StreamWriter writer = File.AppendText(vehicleFilePath))
+            {
+                if (vehicle is Car car)
+                    writer.WriteLine($"Car|{car.Brand}|{car.Model}|{car.Year}|{car.LicensePlate}|{car.IsLuxury}");
+                else if (vehicle is Truck truck)
+                    writer.WriteLine($"Truck|{truck.Brand}|{truck.Model}|{truck.Year}|{truck.LicensePlate}|{truck.MaxLoadKG}");
+                else if (vehicle is Motorbike bike)
+                    writer.WriteLine($"Motorbike|{bike.Brand}|{bike.Model}|{bike.Year}|{bike.LicensePlate}|{bike.RequiresHelmet}");
+            }
+        }
+
+
     }// End of Program class
 
     public class Vehicle
