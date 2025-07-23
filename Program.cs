@@ -37,5 +37,34 @@
         }
     }
 
+    public class Car : Vehicle
+    {
+        public bool IsLuxury { get; set; }
+
+        public Car(string brand, string model, int year, string licensePlate, bool isLuxury)
+            : base(brand, model, year, licensePlate)
+        {
+            IsLuxury = isLuxury;
+        }
+
+        public override double CalculateRentalCost(int days)
+        {
+            double rate = IsLuxury ? 80 : 60;
+            double cost = rate * days;
+            if (days > 7)
+                cost *= 0.9;
+            return cost;
+        }
+
+        public override double CalculateRentalCost(int days, bool withDriver)
+        {
+            double cost = CalculateRentalCost(days);
+            if (withDriver)
+                cost += 60;
+            return cost;
+        }
+    }
+
+
 
 } // End of namespace
