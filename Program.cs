@@ -2,10 +2,57 @@
 {
     internal class Program
     {
+
+        static List<Vehicle> vehicles = new List<Vehicle>();
+        static string vehicleFilePath = "vehicles.txt";
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("SmartCar Rentals System");
+                Console.WriteLine("1. Add a Vehicle");
+                Console.WriteLine("2. View Available Vehicles");
+                Console.WriteLine("3. Rent a Vehicle");
+                Console.WriteLine("4. Exit");
+                Console.Write("Choose an option: ");
+                string input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        //AddVehicle();
+                        Pause();
+                        break;
+                    case "2":
+                        //ViewVehicles();
+                        Pause();
+                        break;
+                    case "3":
+                        //RentVehicle();
+                        Pause();
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option. Try again.");
+                       // Pause();
+                        break;
+                }
+            }
         } // End of Main method
+
+
+        static void Pause()
+        {
+            Console.WriteLine("\nPress Enter to continue...");
+            Console.ReadLine();
+        }
+
+
+
     }// End of Program class
 
     public class Vehicle
