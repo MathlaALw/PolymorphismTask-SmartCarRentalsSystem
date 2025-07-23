@@ -8,7 +8,7 @@
 
         static void Main(string[] args)
         {
-            
+            LoadVehicles();
             while (true)
             {
                 Console.Clear();
