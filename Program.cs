@@ -76,7 +76,7 @@
                 bool isLuxury = Console.ReadLine().ToLower() == "yes";
                 var car = new Car(brand, model, year, plate, isLuxury);
                 vehicles.Add(car);
-                
+                SaveVehicleToFile(car);
             }
             else if (type == "2")
             {
@@ -88,7 +88,8 @@
                 }
                 var truck = new Truck(brand, model, year, plate, maxLoad);
                 vehicles.Add(truck);
-                
+                SaveVehicleToFile(truck);
+
             }
             else if (type == "3")
             {
@@ -96,7 +97,7 @@
                 bool helmet = Console.ReadLine().ToLower() == "yes";
                 var bike = new Motorbike(brand, model, year, plate, helmet);
                 vehicles.Add(bike);
-                
+                SaveVehicleToFile(bike);
             }
             else
             {
