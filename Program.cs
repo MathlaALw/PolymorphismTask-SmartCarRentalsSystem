@@ -71,6 +71,21 @@
         }
     }
 
+    public class Truck : Vehicle
+    {
+        // Property 
+        public double MaxLoadKG { get; set; }
+        // Constructor
+        public Truck(string brand, string model, int year, string licensePlate, double maxLoadKG)
+            : base(brand, model, year, licensePlate)
+        {
+            MaxLoadKG = maxLoadKG;
+        }
+
+       
+    }
+
+
 
 
 } // End of namespace
