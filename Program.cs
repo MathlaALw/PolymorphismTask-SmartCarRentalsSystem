@@ -81,9 +81,32 @@
         {
             MaxLoadKG = maxLoadKG;
         }
+        // Method to calculate rental cost
+        public override double CalculateRentalCost(int days)
+        {
+            double cost = 100 * days;
+            if (days > 7)
+                cost *= 0.9;
+            return cost;
+        }
 
-       
+        // Overloaded method to calculate rental cost with cargo weight
+        public double CalculateRentalCost(int days, double cargoWeight)
+        {
+            if (cargoWeight > MaxLoadKG)
+            {
+                Console.WriteLine("Error: cargo exceeds max load.");
+                return 0;
+            }
+
+            double cost = CalculateRentalCost(days);
+            cost += 50;
+            return cost;
+        }
+
     }
+
+
 
 
 
