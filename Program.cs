@@ -31,7 +31,7 @@
                         Pause();
                         break;
                     case "3":
-                        //RentVehicle();
+                        RentVehicle();
                         Pause();
                         break;
                     case "4":
@@ -122,6 +122,55 @@
                 else if (v is Motorbike bike)
                     Console.WriteLine($"Motorbike | Helmet Required: {(bike.RequiresHelmet ? "Yes" : "No")}");
             }
+        }
+
+        // Method to rent a vehicle
+        static void RentVehicle()
+        {
+
+
+            ViewVehicles();
+
+            Console.Write("\nEnter vehicle number to rent: ");
+            if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > vehicles.Count)
+            {
+                Console.WriteLine("Invalid selection.");
+                return;
+            }
+
+            Vehicle selected = vehicles[choice - 1];
+            Console.Write("Enter rental days: ");
+            if (!int.TryParse(Console.ReadLine(), out int days) || days <= 0)
+            {
+                Console.WriteLine("Invalid number of days.");
+                return;
+            }
+
+            double totalCost = 0;
+
+            if (selected is Car car)
+            {
+                Console.Write("Need driver? (yes/no): ");
+                string driverInput = Console.ReadLine().ToLower();
+                bool withDriver = driverInput == "yes";
+                totalCost = car.CalculateRentalCost(days, withDriver);
+            }
+            else if (selected is Truck truck)
+            {
+                Console.Write("Enter cargo weight (kg): ");
+                if (!double.TryParse(Console.ReadLine(), out double weight))
+                {
+                    Console.WriteLine("Invalid weight.");
+                    return;
+                }
+                totalCost = truck.CalculateRentalCost(days, weight);
+            }
+            else if (selected is Motorbike bike)
+            {
+                totalCost = bike.CalculateRentalCost(days);
+            }
+
+            Console.WriteLine($"\nTotal Rental Cost: ${totalCost:F2}");
         }
 
 
