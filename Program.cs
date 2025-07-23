@@ -49,7 +49,13 @@
 
         public override double CalculateRentalCost(int days)
         {
-            double rate = IsLuxury ? 80 : 60;
+            
+            double rate = 0;
+            if (IsLuxury)
+                rate = 80;
+            else
+                rate = 60;
+
             double cost = rate * days;
             if (days > 7)
                 cost *= 0.9;
