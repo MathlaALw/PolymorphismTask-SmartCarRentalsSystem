@@ -23,7 +23,7 @@
                 switch (input)
                 {
                     case "1":
-                        //AddVehicle();
+                        AddVehicle();
                         Pause();
                         break;
                     case "2":
@@ -43,6 +43,71 @@
                 }
             }
         } // End of Main method
+        static void AddVehicle()
+        {
+            Console.WriteLine("\nChoose vehicle type to add:");
+            Console.WriteLine("1. Car");
+            Console.WriteLine("2. Truck");
+            Console.WriteLine("3. Motorbike");
+            Console.Write("Enter choice: ");
+            string type = Console.ReadLine();
+
+            Console.Write("Brand: ");
+            string brand = Console.ReadLine();
+
+            Console.Write("Model: ");
+            string model = Console.ReadLine();
+
+            Console.Write("Year: ");
+            if (!int.TryParse(Console.ReadLine(), out int year))
+            {
+                Console.WriteLine("Invalid year.");
+                return;
+            }
+
+            Console.Write("License Plate: ");
+            string plate = Console.ReadLine();
+
+            if (type == "1")
+            {
+                Console.Write("Is Luxury? (yes/no): ");
+                bool isLuxury = Console.ReadLine().ToLower() == "yes";
+                var car = new Car(brand, model, year, plate, isLuxury);
+                vehicles.Add(car);
+                
+            }
+            else if (type == "2")
+            {
+                Console.Write("Max Load (kg): ");
+                if (!double.TryParse(Console.ReadLine(), out double maxLoad))
+                {
+                    Console.WriteLine("Invalid load.");
+                    return;
+                }
+                var truck = new Truck(brand, model, year, plate, maxLoad);
+                vehicles.Add(truck);
+                
+            }
+            else if (type == "3")
+            {
+                Console.Write("Requires Helmet? (yes/no): ");
+                bool helmet = Console.ReadLine().ToLower() == "yes";
+                var bike = new Motorbike(brand, model, year, plate, helmet);
+                vehicles.Add(bike);
+                
+            }
+            else
+            {
+                Console.WriteLine("Invalid vehicle type.");
+            }
+
+
+        }
+
+
+
+
+
 
 
         static void Pause()
