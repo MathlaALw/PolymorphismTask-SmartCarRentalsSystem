@@ -174,8 +174,7 @@
         }
 
 
-
-
+     
 
         static void Pause()
         {
@@ -198,6 +197,37 @@
                     writer.WriteLine($"Motorbike|{bike.Brand}|{bike.Model}|{bike.Year}|{bike.LicensePlate}|{bike.RequiresHelmet}");
             }
         }
+
+
+
+        // Method to Load vehicles from file 
+        static void LoadVehicles()
+        {
+            if (File.Exists(vehicleFilePath))
+            {
+                using (StreamReader reader = new StreamReader(vehicleFilePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] parts = line.Split('|');
+                        if (parts[0] == "Car")
+                        {
+                            vehicles.Add(new Car(parts[1], parts[2], int.Parse(parts[3]), parts[4], bool.Parse(parts[5])));
+                        }
+                        else if (parts[0] == "Truck")
+                        {
+                            vehicles.Add(new Truck(parts[1], parts[2], int.Parse(parts[3]), parts[4], double.Parse(parts[5])));
+                        }
+                        else if (parts[0] == "Motorbike")
+                        {
+                            vehicles.Add(new Motorbike(parts[1], parts[2], int.Parse(parts[3]), parts[4], bool.Parse(parts[5])));
+                        }
+                    }
+                }
+            }
+        }
+
 
 
     }// End of Program class
