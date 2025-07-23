@@ -105,7 +105,19 @@
         }
 
     }
+    public class Motorbike : Vehicle
+    {
+        // Property 
+        public bool RequiresHelmet { get; set; }
+        // Constructor
+        public Motorbike(string brand, string model, int year, string licensePlate, bool requiresHelmet)
+            : base(brand, model, year, licensePlate)
+        {
+            RequiresHelmet = requiresHelmet;
+        }
 
+      
+    }
 
 
 
